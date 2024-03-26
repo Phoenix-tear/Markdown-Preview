@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+form{
+    position: relative;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    z-index: 10;
+    background-color: rgb(255, 255, 255);
+    width: 15vw;
+    color: rgb(86, 86, 86);
+}
+input{
+    color: white;
+}
