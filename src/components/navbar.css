@@ -1,18 +1,11 @@
 .navbar{
-    background-color: #3e4745;
+    background-color: #473D70;
     color: white;
 }
 
 .modal {
-    width: 0vw; /* Adjust the width as needed */
     color: rgb(255, 255, 255);
 }
 #btn{
     color: black;
-}
-.tippy-box {
-    height:  5vh;
-    font-size: 12px;
-    border: 2px solid black; /* Add border */
-    border-radius: 4px; /* Optional: Add border radius for rounded corners */
 }

@@ -8,7 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #1F2023;
+  background: #11001b;
   
 }
 
@@ -78,16 +78,19 @@ p {
   min-height: 30vh;
   padding: 1rem 2rem;
   color: white;
-  background-color: #2c334a;
+  background-color: #1C7690;
   width: 100%;
 }
 .result {
   padding: 1rem 2rem;
   color: white;
-  background-color:#2c334a ;
+  background-color:#1C7690;
   width: 100%;
   min-height: 30vh;
   overflow-y: auto;
+}
+::placeholder{
+  color:black
 }
 
 img {
@@ -115,13 +118,5 @@ pre {
   color: yellow;
   margin-bottom: 1.5rem;
 }
-@media (min-width: 768px ) and (min-height:1024px){
-  .markdown{
-    height: 75vh;
-  }
-  .nav{
-    font-size: 70px;
-  }
-  
-}
+
 

@@ -16,13 +16,9 @@ function LinkModal({ onSubmit, onClose }) {
     return (
 
 
-        <form onSubmit={handleSubmit} className=" p-[0.2vh] md:p-[1.2vh] lg:p-[3vh]">
-
-            <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className=" bg-slate-700 p-[1vh] " />
-
-
-            <input type="text" placeholder="Link" value={link} onChange={(e) => setLink(e.target.value)} className=" bg-slate-700 p-[1vh]" />
-
+        <form onSubmit={handleSubmit} className=" p-[0.5vh] md:p-[1.2vh] lg:p-[3vh] absolute flex flex-col gap-y-[2vh] z-10 w-[20vw] rounded-md ">
+            <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className=" bg-slate-700 p-[1vh] rounded-md" />
+            <input type="text" placeholder="Link" value={link} onChange={(e) => setLink(e.target.value)} className=" bg-slate-700 p-[1vh] rounded-md" />
             <button type="submit">Submit</button>
         </form>
 

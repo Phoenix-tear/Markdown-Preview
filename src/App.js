@@ -1,9 +1,7 @@
-// App.js
 
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import Navbar from "./components/navbar";
-
 import "./App.css";
 
 function Italics(txt) {
@@ -26,7 +24,7 @@ function Bold(txt) {
 }
 
 function App() {
-  const [markdown, setMarkdown] = useState("# Markdown Preview");
+  const [markdown, setMarkdown] = useState("");
   const [selectedText, setSelectedText] = useState("");
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false); // Add state for image modal
@@ -103,29 +101,29 @@ function App() {
 
   const handleLinkSubmit = (formattedLink) => {
     setMarkdown((prevMarkdown) => prevMarkdown + " " + formattedLink);
-    setIsLinkModalOpen(false); // Close the link modal after submitting
-    setIsImageModalOpen(false); // Close the image modal after submitting
+    setIsLinkModalOpen(false); 
+    setIsImageModalOpen(false); 
   };
 
   useEffect(() => {
     const modalDiv = document.getElementById("linkModal");
     if (isLinkModalOpen) {
-      modalDiv.style.display = "block"; // Show the link modal
+      modalDiv.style.display = "block";
     } else {
-      modalDiv.style.display = "none"; // Hide the link modal
+      modalDiv.style.display = "none"; 
     }
 
     const imageModalDiv = document.getElementById("imageModal");
     if (isImageModalOpen) {
-      imageModalDiv.style.display = "block"; // Show the image modal
+      imageModalDiv.style.display = "block"; 
     } else {
-      imageModalDiv.style.display = "none"; // Hide the image modal
+      imageModalDiv.style.display = "none"; 
     }
   }, [isLinkModalOpen, isImageModalOpen]);
 
   const handleTextareaClick = () => {
-    setIsLinkModalOpen(false); // Close the link modal when clicking on the textarea
-    setIsImageModalOpen(false); // Close the image modal when clicking on the textarea
+    setIsLinkModalOpen(false); 
+    setIsImageModalOpen(false); 
   };
 
 
@@ -145,15 +143,16 @@ function App() {
         handleCodeblock={handleCodeblock}
       />
 
-      <section className="markdown justify-center">
+      <section className="markdown justify-center lg:pt-[9vh]">
         <textarea
+          placeholder="Write your Markdown code here"
           onMouseUp={handleTextSelection}
           onClick={handleTextareaClick}
-          className="input h-[40vh] md:h-[80vh] lg:h-[70vh]"
+          className="input h-[40vh] md:h-[70vh] lg:h-[70vh] relative"
           value={markdown}
           onChange={(e) => setMarkdown(e.target.value)}
         ></textarea>
-        <article className="result h-[40vh] md:h-[80vh] lg:h-[70vh]">
+        <article className="result h-[40vh] md:h-[70vh] lg:h-[70vh] relative">
           <ReactMarkdown>{markdown}</ReactMarkdown>
 
         </article>

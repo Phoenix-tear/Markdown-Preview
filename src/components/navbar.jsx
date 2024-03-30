@@ -1,61 +1,61 @@
-// navbar.jsx
-
 import React, { useState } from "react";
 import "./navbar.css";
 import LinkModal from "./linkmodal";
-import LinkImg from "./linkimg"; // Import the LinkImg component
-import Tippy from '@tippyjs/react'
+import LinkImg from "./linkimg"; 
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'
 
 function Navbar({ handleBold, handleItalics, handleHeadings, isLinkModalOpen, setIsLinkModalOpen, isImageModalOpen, setIsImageModalOpen, handleLinkSubmit, handleCodeblock}) {
     const [showHeadingTooltip, setShowHeadingTooltip] = useState(false);
 
     const handleLinkButtonClick = () => {
-        setIsLinkModalOpen(true); // Open link modal
-        setIsImageModalOpen(false); // Close image modal
+        setIsLinkModalOpen(true);
+        setIsImageModalOpen(false);
     };
 
     const handleImageButtonClick = () => {
-        setIsImageModalOpen(true); // Open image modal
-        setIsLinkModalOpen(false); // Close link modal
+        setIsImageModalOpen(true);
+        setIsLinkModalOpen(false); 
     };
 
     return (
-        <div className="h-[10vh] navbar px-[2vw] py-[2vh] flex text-s w-full md:gap-x-[2vw] md:h-[7vh] lg:gap-x-[2vw] lg:h-[10vh] lg:text-xl lg:">
-            <div className="container md:w-[7vw] ">
+        <div className="h-[10vh] navbar md:px-[2vw] py-[2vh] flex text-s w-full md:gap-x-[5vw] lg:gap-x-[5vw] md:text-lg lg:text-lg justify-evenly relative md:justify-normal">
+            <div className="container w-max relative hover:scale-110 duration-150 ease-in-out">
                 <button onClick={handleBold}>Bold</button>
             </div>
-            <div className="container md:w-[7vw]">
+            <div className="container w-max relative hover:scale-110 duration-150 ease-in-out">
                 <button onClick={handleItalics}>Italics</button>
             </div>
-            <div className="container md:w-[6vw]">
-                <Tippy content="Select the text with a space before it to enable heading" className=" bg-slate-200">
+            <div className="container w-max relative hover:scale-110 duration-150 ease-in-out">
+                <Tippy content="Select the text with a space before it to enable heading" className=" bg-slate-200 absolute w-[15vw]">
                     <button
-                        onMouseEnter={() => setShowHeadingTooltip(true)} // Show tooltip on mouse enter
-                        onMouseLeave={() => setShowHeadingTooltip(false)} // Hide tooltip on mouse leave
+                        onMouseEnter={() => setShowHeadingTooltip(true)} 
+                        onMouseLeave={() => setShowHeadingTooltip(false)} 
                         onClick={handleHeadings}
                     >
                         Heading
-                        {showHeadingTooltip && ( // Conditional rendering for tooltip
+                        {showHeadingTooltip && ( 
                             <div className="tooltip"></div>
                         )}
                     </button>
                 </Tippy >
             </div>
-            <div className="flex flex-col container md:w-[10vw]">
-                <button className="linkbtn" onClick={handleLinkButtonClick}>Link</button> 
+            <div className="container w-max relative hover:scale-110 duration-150 ease-in-out">
+            <button onClick={handleCodeblock}>Codeblock</button>
+            </div>
+            <div className="flex flex-col w-max relative ">
+                <button className="linkbtn hover:scale-110 duration-150 ease-in-out" onClick={handleLinkButtonClick}>Link</button> 
                 <div id="linkModal" className={`modal ${isLinkModalOpen ? "open" : ""}`}>
                     <LinkModal id="btn" isOpen={isLinkModalOpen} onClose={() => setIsLinkModalOpen(false)} onSubmit={handleLinkSubmit} />
                 </div>
             </div>
-            <div className="container md:w-[7vw]">
-                <button className="imgbtn" onClick={handleImageButtonClick}>Image</button>
+            <div className="flex flex-col w-max relative">
+                <button className="imgbtn hover:scale-110 duration-150 ease-in-out" onClick={handleImageButtonClick}>Image</button>
                 <div id="imageModal" className={`modal ${isImageModalOpen ? "open" : ""}`}>
                     <LinkImg id="btn" isOpen={isImageModalOpen} onClose={() => setIsImageModalOpen(false)} onSubmit={handleLinkSubmit} />
                 </div>
             </div>
-            <div className="container md:w-[20vw]">
-            <button onClick={handleCodeblock}>Codeblock</button>
-            </div>
+            
         </div>
     );
 }
