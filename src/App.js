@@ -12,11 +12,7 @@ function CodeBlock(txt){
 }
 
 function Heading(txt) {
-  if (txt.startsWith('#') || /^\s/.test(txt)) {
-    return txt;
-  } else {
-    return '#' + txt.trim();
-  }
+  return '#' + txt;
 }
 
 function Bold(txt) {
