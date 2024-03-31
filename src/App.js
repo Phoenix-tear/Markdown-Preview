@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import Navbar from "./components/navbar";
@@ -23,7 +22,8 @@ function App() {
   const [markdown, setMarkdown] = useState("");
   const [selectedText, setSelectedText] = useState("");
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false); // Add state for image modal
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [showHeadingTooltip, setShowHeadingTooltip] = useState(false);
 
   useEffect(() => {
     document.addEventListener("mouseup", handleTextSelection);
@@ -32,6 +32,7 @@ function App() {
       document.removeEventListener("mouseup", handleTextSelection);
     };
   }, []);
+
   useEffect(() => {
     const handleClickOutsideModal = (e) => {
       if (
@@ -51,7 +52,7 @@ function App() {
       document.body.removeEventListener("click", handleClickOutsideModal);
     };
   }, []);
-  
+
   const handleTextSelection = () => {
     const selection = window.getSelection();
     if (selection) {
@@ -77,6 +78,7 @@ function App() {
       setMarkdown((prevMarkdown) => prevMarkdown + "*Add Text Here*");
     }
   };
+
   const handleCodeblock = () => {
     if (selectedText) {
       const codeblock = CodeBlock(selectedText);
@@ -130,13 +132,14 @@ function App() {
         handleHeadings={handleHeadings}
         handleBold={handleBold}
         onLinkClick={() => setIsLinkModalOpen(true)}
-        onImageClick={() => setIsImageModalOpen(true)} // Handle image button click
+        onImageClick={() => setIsImageModalOpen(true)}
         isLinkModalOpen={isLinkModalOpen}
         setIsLinkModalOpen={setIsLinkModalOpen}
-        isImageModalOpen={isImageModalOpen} // Pass image modal state
-        setIsImageModalOpen={setIsImageModalOpen} // Set image modal state
+        isImageModalOpen={isImageModalOpen}
+        setIsImageModalOpen={setIsImageModalOpen}
         handleLinkSubmit={handleLinkSubmit}
         handleCodeblock={handleCodeblock}
+        setShowHeadingTooltip={setShowHeadingTooltip} // Pass setShowHeadingTooltip as prop
       />
 
       <section className="markdown justify-center lg:pt-[9vh]">
