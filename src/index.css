@@ -89,6 +89,9 @@ p {
   min-height: 30vh;
   overflow-y: auto;
 }
+.result a{
+  color: #0000FF;
+}
 ::placeholder{
   color:black
 }
